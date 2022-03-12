@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Window coordinates</title>
+    <style>
+      body {
+        background-color: rgb(27, 27, 27);
+      }
+      div {
+        background-color: blanchedalmond;
+        width: 100px;
+        height: 100px;
+        padding: 12px;
+        margin: 12px 6px;
+        border-radius: 4px;
+      }
+      .sbox {
+        background-color: rgb(255, 135, 79);
+        width: 100px;
+        height: 100px;
+        padding: 12px;
+        margin: 12px 6px;
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div class="sbox"></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <script>
+      const sbox = document.querySelector(".sbox");
+      document.addEventListener("click", (e) => {
+        const rect = sbox.getBoundingClientRect();
+        console.log(rect);
+        console.log(`clinet: ${e.clientX}, ${e.clientY}`);
+        console.log(`page: ${e.pageX}, ${e.pageY}`);
+      });
+    </script>
+  </body>
+</html>
