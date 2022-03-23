@@ -24,6 +24,11 @@
         padding: 12px;
         margin: 12px 6px;
       }
+      aside {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+      }
     </style>
   </head>
   <body>
@@ -38,6 +43,11 @@
     <div></div>
     <div></div>
     <div></div>
+    <aside>
+      <button class="scroll-by">scroll-by 100px</button>
+      <button class="scroll-to">scroll-to 100px</button>
+      <button class="scroll-into">scroll-into sbox</button>
+    </aside>
     <script>
       const sbox = document.querySelector(".sbox");
       document.addEventListener("click", (e) => {
@@ -45,6 +55,20 @@
         console.log(rect);
         console.log(`clinet: ${e.clientX}, ${e.clientY}`);
         console.log(`page: ${e.pageX}, ${e.pageY}`);
+      });
+
+      const scrollBy = document.querySelector(".scroll-by");
+      const scrollTo = document.querySelector(".scroll-to");
+      const scrollInto = document.querySelector(".scroll-into");
+
+      scrollBy.addEventListener("click", () => {
+        window.scrollBy({ top: 100, left: 0, behavior: "smooth" });
+      });
+      scrollTo.addEventListener("click", () => {
+        window.scrollTo(0, 100);
+      });
+      scrollInto.addEventListener("click", () => {
+        sbox.scrollIntoView();
       });
     </script>
   </body>
