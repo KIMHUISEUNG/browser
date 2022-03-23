@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      .outer {
+        width: 1000px;
+        height: 200px;
+        background-color: black;
+      }
+      .inner {
+        position: relative;
+        width: 500px;
+        height: 150px;
+        top: 25px;
+        left: 100px;
+        background-color: rgb(85, 85, 179);
+        color: white;
+        cursor: crosshair;
+        user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        -webkit-user-select: none;
+      }
+      .log {
+        position: relative;
+        width: 100%;
+        text-align: center;
+      }
+    </style>
+    <div class="outer">
+      <div class="inner">
+        <div class="log">
+          <p>
+            offset-relative: <span id="offsetX">0</span>,
+            <span id="offsetY">0</span>
+          </p>
+          <p>
+            Client-relative: <span id="ClientX">0</span>,
+            <span id="ClientY">0</span>
+          </p>
+          <p>
+            Page-relative: <span id="PageX">0</span>,
+            <span id="PageY">0</span>
+          </p>
+          <p>
+            screen-relative: <span id="screenX">0</span>,
+            <span id="screenY">0</span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <script>
+      let inner = document.querySelector(".inner");
+      let log = document.querySelector(".log");
+
+      function setCoords(e, type) {
+        let idX = type + "X";
+        let idY = type + "Y";
+
+        document.getElementById(idX).innerText = e[idX];
+        document.getElementById(idY).innerText = e[idY];
+      }
+      function update(e) {
+        setCoords(e, "offset");
+        setCoords(e, "client");
+        setCoords(e, "page");
+        setCoords(e, "screen");
+      }
+
+      inner.addEventListener("mouseenter", update, false);
+      inner.addEventListener("mousemove", update, false);
+      inner.addEventListener("mouseleave", update, false);
+    </script>
+  </body>
+</html>
